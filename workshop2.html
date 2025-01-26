@@ -7,22 +7,152 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Base styles with mobile-first approach */
         body {
             font-family: Arial, sans-serif;
             background-color: #fff9db;
             margin: 0;
-            padding: 50px 20px 20px 20px; /* Increased top padding */
-            text-align: center;
+            padding: 0;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 800px;
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 50px 20px 20px 20px; /* Added top padding */
-            background-color: #fffbe5;
-            border-radius: 10px;
+            padding: 0 15px;
+            box-sizing: border-box;
         }
-        
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 15px 0;
+            font-size: 1.5rem;
+        }
+
+        /* Word list container */
+        .word-list-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .word-list-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+            max-width: 150px;
+        }
+
+        .word-list-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Verification button */
+        #verifyButton {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        #verifyButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Alert styles */
+        .alert {
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .alert-success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .alert-error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            .word-list-button {
+                font-size: 14px;
+                padding: 8px 12px;
+                max-width: none;
+                flex-basis: calc(50% - 10px);
+            }
+
+            .form-group input,
+            .form-group select {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            #verifyButton {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .word-list-button {
+                flex-basis: 100%;
+            }
+        }
+
         .exercise-section {
             margin-bottom: 30px;
             padding: 20px;
@@ -34,39 +164,33 @@
             align-items: center;
         }
 
-        h1 {
-            font-size: 24px;
-            color: #000;
-            margin-bottom: 20px;
-        }
-
         .word {
-            width: 60%;  /* Reduced from 100% */
-            max-width: 300px;  /* Added max-width for consistency */
+            width: 60%;  
+            max-width: 300px;  
             padding: 12px;
-            border: 3px solid #ffd700;  /* Gold border */
+            border: 3px solid #ffd700;  
             border-radius: 10px;
-            font-size: 1.5em;  /* Increased from default */
+            font-size: 1.5em;  
             text-align: center;
             font-weight: bold;
-            color: #333;  /* Dark gray color */
-            background-color: #f9f9f9;  /* Light background */
+            color: #333;  
+            background-color: #f9f9f9;  
             transition: all 0.3s ease;
-            font-family: 'Amiri', serif;  /* Arabic-friendly serif font */
+            font-family: 'Amiri', serif;  
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin: 0 auto;  /* Center the input */
-            display: block;  /* Ensure margin auto works */
+            margin: 0 auto;  
+            display: block;  
         }
 
         .word:focus {
             outline: none;
-            border-color: #ffcc00;  /* Slightly different gold when focused */
+            border-color: #ffcc00;  
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, auto);  /* Back to 3 columns */
+            grid-template-columns: repeat(3, auto);  
             gap: 40px;
             margin: 20px 0;
             justify-content: center;
@@ -87,18 +211,19 @@
             align-items: center;
             justify-content: center;
             min-width: 140px;
-            max-width: 220px;  /* Increased max-width for sentence section */
+            max-width: 220px;  
             width: 100%;
             margin: 0 3px;
         }
 
-        .grid .box select, .sentence-section select {
+        .grid .box select, 
+        .sentence-section select {
             width: 100%;
-            padding: 8px;  /* Increased padding */
+            padding: 8px;  
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #f9f9f9;
-            font-size: 1em;  /* Increased from 0.8em */
+            font-size: 1em;  
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -108,14 +233,14 @@
             text-align-last: center;
             margin-top: 6px;
             min-width: 160px;
-            line-height: 1.5;  /* Added line height for better readability */
+            line-height: 1.5;  
         }
 
         .sentence-container {
             display: flex;
             justify-content: center;
             width: 100%;
-            margin-top: 20px;  /* Space between grid and sentence section */
+            margin-top: 20px;  
         }
 
         .sentence-section {
@@ -159,10 +284,10 @@
             margin-top: 20px;
             border: 3px dashed #ffd700;
             border-radius: 20px;
-            background-color: #fffaf0; /* Very light golden background */
+            background-color: #fffaf0; 
             padding: 20px;
             font-size: 18px;
-            min-height: 150px; /* Minimum height to make it larger */
+            min-height: 150px; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -171,7 +296,7 @@
         }
 
         .sentence:hover {
-            background-color: #fff5e6; /* Slightly darker on hover */
+            background-color: #fff5e6; 
         }
 
         .sentence select {
@@ -194,11 +319,11 @@
         .word-list-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Center the buttons */
+            justify-content: center; 
             align-items: center;
             gap: 10px;
             margin-bottom: 20px;
-            text-align: center; /* Ensure text is centered */
+            text-align: center; 
         }
 
         .word-list-button {
@@ -322,7 +447,7 @@
         }
 
         .verify-btn {
-            background-color: #ffd700;  /* Gold color */
+            background-color: #ffd700;  
             color: #000;
             border: none;
             padding: 12px 30px;
@@ -335,7 +460,7 @@
         }
 
         .verify-btn:hover {
-            background-color: #ffcc00;  /* Slightly lighter gold */
+            background-color: #ffcc00;  
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
